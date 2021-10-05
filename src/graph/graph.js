@@ -93,14 +93,8 @@ function Graph() {
           <XAxis dataKey="updatedAt" />
           <YAxis />
           <Tooltip
-            dateFormatter={(value, name, props) => {
-              return value;
-            }}
-
-
-            label="yes"
             formatter={(value, name, props) => {
-              return `${value.toFixed(2)}`
+              return value.toFixed(2);
             }}
           />
           <Area
