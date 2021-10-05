@@ -14,6 +14,9 @@ import dateFormatter from "../helpers/date-formatter.helper";
 
 function Graph() {
   const [data, setData] = useState([]);
+  const [aveTime, setAveTime] = useState(0);
+  const [trend, setTrend] = useState(0);
+  const [currentCompletion, setCurrentCompletion] = useState(0);
 
   const fetchData = useCallback(async () => {
     const response = await fetch(
@@ -22,15 +25,49 @@ function Graph() {
 
     const completionDates = await response.json();
 
-    setData(
-      completionDates.map(({ updatedAt, processed }) => {
-        return {
-          updatedAt: dateFormatter(updatedAt, false),
-          completionTime: moment
-            .duration(moment(new Date(updatedAt)).diff(new Date(processed)))
-            .asWeeks(),
-        };
-      })
+    const finalisedDates = completionDates.map(({ updatedAt, processed }) => {
+      return {
+        updatedAt: dateFormatter(updatedAt, false),
+        completionTime: moment
+          .duration(moment(new Date(updatedAt)).diff(new Date(processed)))
+          .asWeeks(),
+      };
+    });
+
+    const listOfDates = finalisedDates.reduce((arr, curr, currIndex, array) => {
+      if (currIndex + 1 >= array.length) return arr;
+
+      const firstDiff = curr.completionTime;
+      const lastDiff = array[currIndex + 1].completionTime;
+
+      const diff = ((lastDiff - firstDiff) / firstDiff) * 100;
+
+      return [...arr, diff];
+    }, []);
+
+    const trend =
+      listOfDates.reduce((val, curr) => {
+        return val + curr;
+      }, 0) / listOfDates.length;
+
+
+      const ave =   finalisedDates.reduce((val, curr) => {
+        return val + curr.completionTime;
+      }, 0) / finalisedDates.length;
+
+    setData(finalisedDates);
+    setAveTime(ave.toFixed(2));
+    setTrend(trend.toFixed(2));
+    setCurrentCompletion(
+      moment
+        .duration(
+          moment(
+            new Date(completionDates[completionDates.length - 1].updatedAt)
+          ).diff(
+            new Date(completionDates[completionDates.length - 1].processed)
+          )
+        )
+        .asWeeks().toFixed(2)
     );
   }, []);
 
@@ -39,7 +76,7 @@ function Graph() {
   }, [fetchData]);
 
   return (
-    <div class="graph-container">
+    <div className="graph-container">
       <ResponsiveContainer>
         <AreaChart
           data={data}
@@ -64,10 +101,10 @@ function Graph() {
         </AreaChart>
       </ResponsiveContainer>
 
-      <div class="d-flex flex-column">
-        <span> ave time taken</span>
-        <span> trend for data</span>
-        <span>current projection for dates</span>
+      <div className="d-flex flex-column">
+        <span className="nowrap"> Ave complation {aveTime} weeks</span>
+        <span className="nowrap"> Change in completion rage {trend}%</span>
+        <span className="nowrap"> Last completion time {currentCompletion} weeks</span>
       </div>
     </div>
   );

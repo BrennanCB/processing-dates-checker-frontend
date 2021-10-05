@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import "./estimates.css";
 import dateFormatter from "../helpers/date-formatter.helper";
 import { Edit } from "@material-ui/icons";
-import { Switch,  IconButton} from "@material-ui/core";
+import { Switch, IconButton } from "@material-ui/core";
 
 function Estimates() {
   const [skipHistory, setSkipHistory] = useState(true);
@@ -24,19 +24,21 @@ function Estimates() {
   }, [fetchData]);
 
   return (
-    <div>
-      <h4>Estimated completion date: </h4>
-<h2>{estimate}</h2>
-      Submission date: {dateFormatter(date)}
-      <IconButton>
-        <Edit />
-      </IconButton>
-      <br />
-      Use historic data
-      <Switch
+    <div className="estimates-container">
+      <span className="estimation-header">Estimated completion date: </span>
+      <h1>{estimate}</h1>
+      <span className="current-date">
+        for {dateFormatter(date)}
+        <IconButton id="editbtn">
+          <Edit />
+        </IconButton>
+      </span>
+      {/* <br /> */}
+      {/* Use historic data */}
+      {/* <Switch
         value={!skipHistory}
         onChange={() => setSkipHistory(!skipHistory)}
-      />
+      /> */}
     </div>
   );
 }

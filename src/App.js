@@ -9,11 +9,11 @@ function App() {
     <div className="App">
       <Header></Header>
 
-      <div class="body-container">
-        <div class="d-flex">
+      <div className="body-container">
+        {/* <div class="d-flex"> */}
           <Estimates></Estimates>
           <CurrentDate></CurrentDate>
-        </div>
+        {/* </div> */}
         <Graph></Graph>
       </div>
     </div>

@@ -27,3 +27,7 @@ code {
 .flex-column {
   flex-direction: column;
 }
+
+.no-wrap {
+  white-space: nowrap;
+}

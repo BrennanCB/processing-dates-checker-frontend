@@ -1,0 +1,13 @@
+.current-dates-container {
+    padding: 1rem 1.5rem;
+    padding-top: 0;
+}
+
+.completion-date {
+    font-size: 0.875rem; 
+}
+
+.updated-at {
+    font-size: 0.75rem;
+    color: lightgray;
+}

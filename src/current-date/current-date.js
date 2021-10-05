@@ -26,12 +26,12 @@ function CurrentDate() {
   }, [fetchData]);
 
   return (
-    <div>
-      <h2>Current processing info</h2>
-      <div>
-        Updated at: {lastUpated} <br />
-        Currently processing: {processing}
-      </div>
+    <div className="current-dates-container">
+      <span className="completion-date">
+        Currently processing requests for {processing}
+      </span>
+      <br />
+      <span className="updated-at">Updated at {lastUpated}</span>
     </div>
   );
 }
