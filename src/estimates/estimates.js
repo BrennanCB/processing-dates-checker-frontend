@@ -1,9 +1,9 @@
 import { useEffect, useState, useCallback } from "react";
-import moment from "moment";
 import "./estimates.css";
+import dateFormatter from "../helpers/date-formatter.helper";
 
 function Estimates() {
-  const [skipHistory, setSkipHistory] = useState(false);
+  const [skipHistory, setSkipHistory] = useState(true);
   const [date, setDate] = useState("26 July 2021");
   const [estimate, setEstimate] = useState(undefined);
 
@@ -14,14 +14,19 @@ function Estimates() {
 
     const estimate = new Date(await response.text());
 
-    setEstimate(moment(estimate).format("DD MMMM"));
+    setEstimate(dateFormatter(estimate));
   }, [date, skipHistory]);
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
-  return <div>i am estimate {estimate}</div>;
+  return (
+    <div>
+      Submission date: {dateFormatter(date)} <br />
+      Estimated completion date: {estimate}
+    </div>
+  );
 }
 
 export default Estimates;

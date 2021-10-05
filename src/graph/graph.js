@@ -8,7 +8,9 @@ import {
   YAxis,
   Tooltip,
   Area,
+  ResponsiveContainer,
 } from "recharts";
+import dateFormatter from "../helpers/date-formatter.helper";
 
 function Graph() {
   const [data, setData] = useState([]);
@@ -23,7 +25,7 @@ function Graph() {
     setData(
       completionDates.map(({ updatedAt, processed }) => {
         return {
-          updatedAt: moment(new Date(updatedAt)).format("DD MMMM"),
+          updatedAt: dateFormatter(updatedAt, false),
           completionTime: moment
             .duration(moment(new Date(updatedAt)).diff(new Date(processed)))
             .asWeeks(),
@@ -37,29 +39,29 @@ function Graph() {
   }, [fetchData]);
 
   return (
-    <AreaChart
-      width={800}
-      height={200}
-      data={data}
-      syncId="processingDatesChart"
-      margin={{
-        top: 10,
-        right: 30,
-        left: 60,
-        bottom: 0,
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="updatedAt" />
-      <YAxis />
-      <Tooltip />
-      <Area
-        type="monotone"
-        dataKey="completionTime"
-        stroke="#82ca9d"
-        fill="#82ca9d"
-      />
-    </AreaChart>
+    <ResponsiveContainer>
+      <AreaChart
+        data={data}
+        syncId="processingDatesChart"
+        margin={{
+          top: 16,
+          right: 16,
+          left: 16,
+          bottom: 16,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="updatedAt" />
+        <YAxis />
+        <Tooltip />
+        <Area
+          type="monotone"
+          dataKey="completionTime"
+          stroke="#82ca9d"
+          fill="#82ca9d"
+        />
+      </AreaChart>
+    </ResponsiveContainer>
   );
 }
 

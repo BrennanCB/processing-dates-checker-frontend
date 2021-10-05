@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Header></Header> 
 
-     <div>
+     <div class="body-container">
        <Estimates></Estimates>
        <CurrentDate></CurrentDate>
        <Graph></Graph>

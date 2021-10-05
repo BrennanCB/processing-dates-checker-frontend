@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import "./current-date.css";
-import moment from "moment";
+import dateFormatter from "../helpers/date-formatter.helper";
 
 function CurrentDate() {
   const [lastUpated, setLastUpdated] = useState(undefined);
@@ -16,8 +16,8 @@ function CurrentDate() {
     const updatedAtDate = new Date(updatedAt);
     const processedDate = new Date(processed);
 
-    setLastUpdated(moment(updatedAtDate).format("DD MMMM"));
-    setProcessing(moment(processedDate).format("DD MMMM"));
+    setLastUpdated(dateFormatter(updatedAtDate));
+    setProcessing(dateFormatter(processedDate));
   }, []);
 
   useEffect(() => {
