@@ -1,16 +1,16 @@
-import { useCallback, useEffect, useState } from "react";
-import "./graph.css";
 import moment from "moment";
+import { useCallback, useEffect, useState } from "react";
 import {
+  Area,
   AreaChart,
   CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Area,
   ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis
 } from "recharts";
 import dateFormatter from "../helpers/date-formatter.helper";
+import "./graph.css";
 
 function Graph() {
   const [data, setData] = useState([]);
@@ -50,8 +50,8 @@ function Graph() {
         return val + curr;
       }, 0) / listOfDates.length;
 
-
-      const ave =   finalisedDates.reduce((val, curr) => {
+    const ave =
+      finalisedDates.reduce((val, curr) => {
         return val + curr.completionTime;
       }, 0) / finalisedDates.length;
 
@@ -67,7 +67,8 @@ function Graph() {
             new Date(completionDates[completionDates.length - 1].processed)
           )
         )
-        .asWeeks().toFixed(2)
+        .asWeeks()
+        .toFixed(2)
     );
   }, []);
 
@@ -104,7 +105,10 @@ function Graph() {
       <div className="d-flex flex-column">
         <span className="nowrap"> Ave complation {aveTime} weeks</span>
         <span className="nowrap"> Change in completion rage {trend}%</span>
-        <span className="nowrap"> Last completion time {currentCompletion} weeks</span>
+        <span className="nowrap">
+          {" "}
+          Last completion time {currentCompletion} weeks
+        </span>
       </div>
     </div>
   );

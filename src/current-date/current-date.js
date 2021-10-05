@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import "./current-date.css";
 import dateFormatter from "../helpers/date-formatter.helper";
+import "./current-date.css";
 
 function CurrentDate() {
   const [lastUpated, setLastUpdated] = useState(undefined);
@@ -21,7 +21,6 @@ function CurrentDate() {
   }, []);
 
   useEffect(() => {
-    console.log("herereer");
     fetchData();
   }, [fetchData]);
 

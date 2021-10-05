@@ -1,8 +1,8 @@
-import { useEffect, useState, useCallback } from "react";
-import "./estimates.css";
-import dateFormatter from "../helpers/date-formatter.helper";
+import { IconButton } from "@material-ui/core";
 import { Edit } from "@material-ui/icons";
-import { Switch, IconButton } from "@material-ui/core";
+import { useCallback, useEffect, useState } from "react";
+import dateFormatter from "../helpers/date-formatter.helper";
+import "./estimates.css";
 
 function Estimates() {
   const [skipHistory, setSkipHistory] = useState(true);

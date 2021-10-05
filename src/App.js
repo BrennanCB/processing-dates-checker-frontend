@@ -1,8 +1,8 @@
-import "./App.css";
-import Header from "./header/header";
-import Estimates from "./estimates/estimates";
 import CurrentDate from "./current-date/current-date";
+import Estimates from "./estimates/estimates";
 import Graph from "./graph/graph";
+import Header from "./header/header";
+import "./App.css";
 
 function App() {
   return (
@@ -11,8 +11,8 @@ function App() {
 
       <div className="body-container">
         {/* <div class="d-flex"> */}
-          <Estimates></Estimates>
-          <CurrentDate></CurrentDate>
+        <Estimates></Estimates>
+        <CurrentDate></CurrentDate>
         {/* </div> */}
         <Graph></Graph>
       </div>
