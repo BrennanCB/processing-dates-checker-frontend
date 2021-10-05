@@ -7,7 +7,7 @@ import {
   ResponsiveContainer,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
 } from "recharts";
 import dateFormatter from "../helpers/date-formatter.helper";
 import "./graph.css";
@@ -92,9 +92,20 @@ function Graph() {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="updatedAt" />
           <YAxis />
-          <Tooltip />
+          <Tooltip
+            dateFormatter={(value, name, props) => {
+              return value;
+            }}
+
+
+            label="yes"
+            formatter={(value, name, props) => {
+              return `${value.toFixed(2)}`
+            }}
+          />
           <Area
             type="monotone"
+            name="Weeks to complete"
             dataKey="completionTime"
             stroke="#82ca9d"
             fill="#82ca9d"
