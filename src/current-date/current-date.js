@@ -26,13 +26,13 @@ function CurrentDate() {
   }, [fetchData]);
 
   return (
-    <>
+    <div>
       <h2>Current processing info</h2>
       <div>
         Updated at: {lastUpated} <br />
         Currently processing: {processing}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,3 +1,5 @@
-.recharts-wrapper {
-    width: 100% !important;
+.graph-container {
+    display: flex;
+    height: 100%;
+
 }

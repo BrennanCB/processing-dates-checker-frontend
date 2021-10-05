@@ -39,29 +39,37 @@ function Graph() {
   }, [fetchData]);
 
   return (
-    <ResponsiveContainer>
-      <AreaChart
-        data={data}
-        syncId="processingDatesChart"
-        margin={{
-          top: 16,
-          right: 16,
-          left: 16,
-          bottom: 16,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="updatedAt" />
-        <YAxis />
-        <Tooltip />
-        <Area
-          type="monotone"
-          dataKey="completionTime"
-          stroke="#82ca9d"
-          fill="#82ca9d"
-        />
-      </AreaChart>
-    </ResponsiveContainer>
+    <div class="graph-container">
+      <ResponsiveContainer>
+        <AreaChart
+          data={data}
+          syncId="processingDatesChart"
+          margin={{
+            top: 16,
+            right: 16,
+            left: 16,
+            bottom: 16,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="updatedAt" />
+          <YAxis />
+          <Tooltip />
+          <Area
+            type="monotone"
+            dataKey="completionTime"
+            stroke="#82ca9d"
+            fill="#82ca9d"
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+
+      <div class="d-flex flex-column">
+        <span> ave time taken</span>
+        <span> trend for data</span>
+        <span>current projection for dates</span>
+      </div>
+    </div>
   );
 }
 
