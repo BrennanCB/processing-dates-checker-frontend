@@ -108,10 +108,14 @@ function Graph() {
       </ResponsiveContainer>
 
       <div className="d-flex flex-column">
-        <span className="nowrap"> Ave complation {aveTime} weeks</span>
-        <span className="nowrap"> Change in completion rage {trend}%</span>
+        <span className="nowrap"> Average completion is {aveTime} weeks</span>
         <span className="nowrap">
-          {" "}
+          Current trend shows completion is taking &nbsp;
+          <span className={trend > 0 ? "error" : "success"}>
+            {trend}%
+          </span> {trend > 0 ? "longer" : "less"}
+        </span>
+        <span className="nowrap">
           Last completion time {currentCompletion} weeks
         </span>
       </div>
