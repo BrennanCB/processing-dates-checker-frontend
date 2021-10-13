@@ -8,6 +8,7 @@ import {
   Tooltip,
   XAxis,
   YAxis,
+  Label,
 } from "recharts";
 import dateFormatter from "../helpers/date-formatter.helper";
 import "./graph.css";
@@ -77,37 +78,43 @@ function Graph() {
   }, [fetchData]);
 
   return (
-    <div className="graph-container">
-      <ResponsiveContainer>
-        <AreaChart
-          data={data}
-          syncId="processingDatesChart"
-          margin={{
-            top: 16,
-            right: 16,
-            left: 16,
-            bottom: 16,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="updatedAt" />
-          <YAxis />
-          <Tooltip
-            formatter={(value, name, props) => {
-              return value.toFixed(2);
-            }}
-          />
-          <Area
-            type="monotone"
-            name="Weeks to complete"
-            dataKey="completionTime"
-            stroke="#82ca9d"
-            fill="#82ca9d"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
+    <>
+      <div className="graph-container">
+        <h2 className="graph-header">Processing times</h2>
 
-      <div className="d-flex flex-column">
+        <ResponsiveContainer className="graph">
+          <AreaChart
+            data={data}
+            syncId="processingDatesChart"
+            margin={{
+              top: 0,
+              right: 16,
+              left: -16,
+              bottom: 0,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="updatedAt" />
+            <YAxis>
+              <Label value="Weeks" angle={-90} position="inside" />
+            </YAxis>
+            <Tooltip
+              formatter={(value, name, props) => {
+                return value.toFixed(2);
+              }}
+            />
+            <Area
+              type="monotone"
+              name="Weeks to complete"
+              dataKey="completionTime"
+              stroke="lightseagreen"
+              fill="lightseagreen"
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/* <div className="d-flex flex-column">
         <span className="nowrap"> Average completion is {aveTime} weeks</span>
         <span className="nowrap">
           Current trend shows completion is taking &nbsp;
@@ -118,8 +125,8 @@ function Graph() {
         <span className="nowrap">
           Last completion time {currentCompletion} weeks
         </span>
-      </div>
-    </div>
+      </div>  */}
+    </>
   );
 }
 

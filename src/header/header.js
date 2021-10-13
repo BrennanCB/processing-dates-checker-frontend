@@ -6,12 +6,14 @@ import "./header.css";
 function Header() {
   return (
     <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <span>I am a header</span>
+      <div className="d-flex logo-conatiner">
+        <img src={logo} className="App-logo" alt="logo" />
+        <span>Processing times</span>
+      </div>
       {/* Open modal with help stuff in it */}
-      <IconButton title="About">
-        <HelpOutline />
-      </IconButton>
+      {/* <IconButton title="About">
+        <HelpOutline className="alt-color" />
+      </IconButton> */}
     </header>
   );
 }

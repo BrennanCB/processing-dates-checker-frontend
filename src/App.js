@@ -10,10 +10,11 @@ function App() {
       <Header></Header>
 
       <div className="body-container">
-        {/* <div class="d-flex"> */}
-        <Estimates></Estimates>
-        <CurrentDate></CurrentDate>
-        {/* </div> */}
+        <div class="estimations-container">
+          <Estimates></Estimates>
+          <hr />
+          <CurrentDate></CurrentDate>
+        </div>
         <Graph></Graph>
       </div>
     </div>

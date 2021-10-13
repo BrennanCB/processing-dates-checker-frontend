@@ -1,13 +1,10 @@
-.estimates-container {
-  padding: 1rem 1.5rem;
-  background-color: lightgray;
-  border-radius: 0.25rem;
-  margin: 1rem 1.5rem;
-}
-
 .estimation-header {
   font-size: 0.875rem;
   opacity: 0.87;
+}
+
+.estimation {
+  color: lightseagreen;
 }
 
 .current-date {
