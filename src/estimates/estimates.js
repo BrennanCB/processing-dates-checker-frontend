@@ -19,7 +19,7 @@ function Estimates() {
   const [skipHistory, setSkipHistory] = useState(true);
   const [date, setDate] = useState("26 July 2021");
   const [estimate, setEstimate] = useState(undefined);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const fetchData = useCallback(async () => {
     const response = await fetch(
