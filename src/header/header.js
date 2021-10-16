@@ -8,7 +8,7 @@ function Header() {
     <header className="App-header">
       <div className="d-flex logo-conatiner">
         <img src={logo} className="App-logo" alt="logo" />
-        <span>Processing times</span>
+        <span>Work permit processing times</span>
       </div>
       {/* Open modal with help stuff in it */}
       {/* <IconButton title="About">
